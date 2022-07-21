@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.IO.Ports;
+
 
 namespace LoggerSDFormatter
 {
     public partial class Form1 : Form
     {
         string sdFolder = "";
+        string comPort = "";
         public Form1()
         {
             InitializeComponent();
@@ -68,6 +71,27 @@ namespace LoggerSDFormatter
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void listCOMPorts_Click(object sender, EventArgs e)
+        {
+            comboBox1.Items.Clear();
+
+            String[] ports = SerialPort.GetPortNames();
+
+            for (int i = 0; i < ports.Length; i++)
+            {
+                comboBox1.Items.Add(ports[i]);
+            }
+            
+
+        }
+
+        private void upload_Click(object sender, EventArgs e)
+        {
+            string strCmdText;
+            strCmdText = "/C \"python.exe\" \"esptool.py\" --chip esp32 --port \"" + comboBox1.GetItemText(comboBox1.SelectedItem) + "\" --baud 460800 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader_dio_40m.bin 0x8000 partitions.bin 0xe000 boot_app0.bin";
+            System.Diagnostics.Process.Start("CMD.exe", strCmdText);
         }
     }
 }
