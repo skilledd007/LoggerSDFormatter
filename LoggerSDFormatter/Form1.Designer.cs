@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.FormatSD = new System.Windows.Forms.Button();
             this.chooseSDCard = new System.Windows.Forms.Button();
@@ -38,13 +39,19 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.listCOMPorts = new System.Windows.Forms.Button();
             this.upload = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrorMessage = new System.Windows.Forms.Label();
+            this.BinFilePath = new System.Windows.Forms.Label();
+            this.selectBinFilePath = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // FormatSD
             // 
             this.FormatSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormatSD.Location = new System.Drawing.Point(330, 366);
+            this.FormatSD.Location = new System.Drawing.Point(399, 368);
             this.FormatSD.Name = "FormatSD";
             this.FormatSD.Size = new System.Drawing.Size(303, 61);
             this.FormatSD.TabIndex = 0;
@@ -55,7 +62,7 @@
             // chooseSDCard
             // 
             this.chooseSDCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chooseSDCard.Location = new System.Drawing.Point(330, 183);
+            this.chooseSDCard.Location = new System.Drawing.Point(399, 185);
             this.chooseSDCard.Name = "chooseSDCard";
             this.chooseSDCard.Size = new System.Drawing.Size(303, 63);
             this.chooseSDCard.TabIndex = 2;
@@ -67,7 +74,7 @@
             // 
             this.SDFilePath.AutoSize = true;
             this.SDFilePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SDFilePath.Location = new System.Drawing.Point(390, 287);
+            this.SDFilePath.Location = new System.Drawing.Point(459, 289);
             this.SDFilePath.Name = "SDFilePath";
             this.SDFilePath.Size = new System.Drawing.Size(152, 31);
             this.SDFilePath.TabIndex = 3;
@@ -77,7 +84,7 @@
             // 
             this.StatusMessage.AutoSize = true;
             this.StatusMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusMessage.Location = new System.Drawing.Point(390, 465);
+            this.StatusMessage.Location = new System.Drawing.Point(459, 467);
             this.StatusMessage.Name = "StatusMessage";
             this.StatusMessage.Size = new System.Drawing.Size(202, 31);
             this.StatusMessage.TabIndex = 4;
@@ -87,7 +94,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(508, 59);
+            this.textBox1.Location = new System.Drawing.Point(727, 59);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(485, 62);
             this.textBox1.TabIndex = 5;
@@ -108,16 +115,17 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(330, 534);
+            this.comboBox1.Location = new System.Drawing.Point(399, 545);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(303, 21);
             this.comboBox1.TabIndex = 7;
             // 
             // listCOMPorts
             // 
-            this.listCOMPorts.Location = new System.Drawing.Point(690, 532);
+            this.listCOMPorts.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listCOMPorts.Location = new System.Drawing.Point(727, 545);
             this.listCOMPorts.Name = "listCOMPorts";
-            this.listCOMPorts.Size = new System.Drawing.Size(195, 23);
+            this.listCOMPorts.Size = new System.Drawing.Size(322, 43);
             this.listCOMPorts.TabIndex = 8;
             this.listCOMPorts.Text = "List COM Ports";
             this.listCOMPorts.UseVisualStyleBackColor = true;
@@ -126,7 +134,7 @@
             // upload
             // 
             this.upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.upload.Location = new System.Drawing.Point(330, 641);
+            this.upload.Location = new System.Drawing.Point(399, 751);
             this.upload.Name = "upload";
             this.upload.Size = new System.Drawing.Size(303, 44);
             this.upload.TabIndex = 10;
@@ -135,11 +143,54 @@
             this.upload.UseVisualStyleBackColor = true;
             this.upload.Click += new System.EventHandler(this.upload_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // ErrorMessage
+            // 
+            this.ErrorMessage.AutoSize = true;
+            this.ErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ErrorMessage.ForeColor = System.Drawing.Color.Red;
+            this.ErrorMessage.Location = new System.Drawing.Point(399, 817);
+            this.ErrorMessage.Name = "ErrorMessage";
+            this.ErrorMessage.Size = new System.Drawing.Size(245, 39);
+            this.ErrorMessage.TabIndex = 11;
+            this.ErrorMessage.Text = "Error Message";
+            // 
+            // BinFilePath
+            // 
+            this.BinFilePath.AutoSize = true;
+            this.BinFilePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BinFilePath.Location = new System.Drawing.Point(406, 706);
+            this.BinFilePath.Name = "BinFilePath";
+            this.BinFilePath.Size = new System.Drawing.Size(167, 31);
+            this.BinFilePath.TabIndex = 12;
+            this.BinFilePath.Text = "Bin File Path";
+            // 
+            // selectBinFilePath
+            // 
+            this.selectBinFilePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectBinFilePath.Location = new System.Drawing.Point(399, 647);
+            this.selectBinFilePath.Name = "selectBinFilePath";
+            this.selectBinFilePath.Size = new System.Drawing.Size(303, 39);
+            this.selectBinFilePath.TabIndex = 13;
+            this.selectBinFilePath.Text = "Select Bin Filepath";
+            this.selectBinFilePath.UseVisualStyleBackColor = true;
+            this.selectBinFilePath.Click += new System.EventHandler(this.selectBinFilePath_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 919);
+            this.Controls.Add(this.selectBinFilePath);
+            this.Controls.Add(this.BinFilePath);
+            this.Controls.Add(this.ErrorMessage);
             this.Controls.Add(this.upload);
             this.Controls.Add(this.listCOMPorts);
             this.Controls.Add(this.comboBox1);
@@ -151,7 +202,9 @@
             this.Controls.Add(this.FormatSD);
             this.Name = "Form1";
             this.Text = "LoggerSDFormatter";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,6 +221,11 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button listCOMPorts;
         private System.Windows.Forms.Button upload;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label ErrorMessage;
+        private System.Windows.Forms.Label BinFilePath;
+        private System.Windows.Forms.Button selectBinFilePath;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
