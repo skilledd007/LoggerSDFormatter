@@ -18,6 +18,7 @@ namespace LoggerSDFormatter
         string sdFolder = "";
         string comPort = "";
         string binFilePath = "";
+        string buildFolder = "";
         public Form1()
         {
             InitializeComponent();
@@ -125,6 +126,26 @@ namespace LoggerSDFormatter
                 binFilePath = openFileDialog1.FileName;
                 BinFilePath.Text = binFilePath;
             }
+        }
+
+        private void chooseBuildFolder_Click(object sender, EventArgs e)
+        {
+            buildFolderFP.Text = "build Folder Filepath";
+           FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                // shows the path to the selected folder in the folder dialog
+               buildFolder = fbd.SelectedPath;
+            buildFolderFP.Text = buildFolder;
+            SDFilePath.Text = sdFolder;
+        }
+
+        private void UploadFrontEnd_Click(object sender, EventArgs e)
+        {
+            foreach (string newPath in Directory.GetFiles(buildFolder, "*.*", SearchOption.AllDirectories))
+            {
+                File.Copy(newPath, newPath.Replace(buildFolder, sdFolder), true);
+            }
+
         }
     }
 }
