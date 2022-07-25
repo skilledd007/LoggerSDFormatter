@@ -37,7 +37,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.listCOMPorts = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.upload = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -124,15 +123,6 @@
             this.listCOMPorts.UseVisualStyleBackColor = true;
             this.listCOMPorts.Click += new System.EventHandler(this.listCOMPorts_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // upload
             // 
             this.upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -151,7 +141,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 919);
             this.Controls.Add(this.upload);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.listCOMPorts);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.pictureBox1);
@@ -178,7 +167,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button listCOMPorts;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button upload;
     }
 }
