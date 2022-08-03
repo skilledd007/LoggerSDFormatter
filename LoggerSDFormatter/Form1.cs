@@ -51,6 +51,7 @@ namespace LoggerSDFormatter
             di.CreateSubdirectory("settings");
             di.CreateSubdirectory("tests");
             di.CreateSubdirectory("webapp");
+            di.CreateSubdirectory("time");
             string[] dirs = Directory.GetDirectories(sdFolder, "*", SearchOption.AllDirectories);
             File.Create(Path.Combine(dirs[0], "batteryinfo.txt"));
             File.Create(Path.Combine(dirs[1], "customerinfo.txt"));
@@ -60,7 +61,19 @@ namespace LoggerSDFormatter
             Byte[] title = new UTF8Encoding(true).GetBytes("Battery Wizard\n");
             settingsFile.Write(title, 0, title.Length);
             settingsFile.Close();
+            FileStream timeFile = File.Create(Path.Combine(dirs[7], "starting_time.txt"));
+            //Get Unix time
+            String timeString = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + "\n";
+            Byte[] timestamp = new UTF8Encoding(true).GetBytes(timeString);
+            timeFile.Write(timestamp,0,timestamp.Length);
+            timeFile.Close();
             StatusMessage.Text = "Success!!";
+            DialogResult res = MessageBox.Show("Formatted SD Card Successfully! Don't forget to Load WebApp prior to Ejecting", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (res == DialogResult.OK)
+            {
+
+
+            }
 
 
 

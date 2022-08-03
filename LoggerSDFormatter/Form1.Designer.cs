@@ -118,7 +118,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(39, 453);
+            this.comboBox1.Location = new System.Drawing.Point(46, 543);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(303, 21);
             this.comboBox1.TabIndex = 7;
@@ -126,7 +126,7 @@
             // listCOMPorts
             // 
             this.listCOMPorts.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listCOMPorts.Location = new System.Drawing.Point(367, 453);
+            this.listCOMPorts.Location = new System.Drawing.Point(374, 543);
             this.listCOMPorts.Name = "listCOMPorts";
             this.listCOMPorts.Size = new System.Drawing.Size(322, 43);
             this.listCOMPorts.TabIndex = 8;
@@ -137,7 +137,7 @@
             // upload
             // 
             this.upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.upload.Location = new System.Drawing.Point(39, 671);
+            this.upload.Location = new System.Drawing.Point(46, 761);
             this.upload.Name = "upload";
             this.upload.Size = new System.Drawing.Size(303, 44);
             this.upload.TabIndex = 10;
@@ -165,7 +165,7 @@
             // 
             this.BinFilePath.AutoSize = true;
             this.BinFilePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BinFilePath.Location = new System.Drawing.Point(40, 612);
+            this.BinFilePath.Location = new System.Drawing.Point(47, 702);
             this.BinFilePath.Name = "BinFilePath";
             this.BinFilePath.Size = new System.Drawing.Size(167, 31);
             this.BinFilePath.TabIndex = 12;
@@ -174,7 +174,7 @@
             // selectBinFilePath
             // 
             this.selectBinFilePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectBinFilePath.Location = new System.Drawing.Point(39, 528);
+            this.selectBinFilePath.Location = new System.Drawing.Point(46, 618);
             this.selectBinFilePath.Name = "selectBinFilePath";
             this.selectBinFilePath.Size = new System.Drawing.Size(303, 39);
             this.selectBinFilePath.TabIndex = 13;
