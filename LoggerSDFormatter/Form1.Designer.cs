@@ -33,20 +33,17 @@
             this.FormatSD = new System.Windows.Forms.Button();
             this.chooseSDCard = new System.Windows.Forms.Button();
             this.SDFilePath = new System.Windows.Forms.Label();
-            this.StatusMessage = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.listCOMPorts = new System.Windows.Forms.Button();
             this.upload = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ErrorMessage = new System.Windows.Forms.Label();
-            this.BinFilePath = new System.Windows.Forms.Label();
-            this.selectBinFilePath = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.chooseBuildFolder = new System.Windows.Forms.Button();
-            this.buildFolderFP = new System.Windows.Forms.Label();
-            this.UploadFrontEnd = new System.Windows.Forms.Button();
+            this.UpdateTimeStampButton = new System.Windows.Forms.Button();
+            this.isProductionCheckbox = new System.Windows.Forms.CheckBox();
+            this.upload113 = new System.Windows.Forms.Button();
+            this.upload120 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -83,17 +80,6 @@
             this.SDFilePath.TabIndex = 3;
             this.SDFilePath.Text = "SDFilePath";
             // 
-            // StatusMessage
-            // 
-            this.StatusMessage.AutoSize = true;
-            this.StatusMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusMessage.Location = new System.Drawing.Point(99, 393);
-            this.StatusMessage.Name = "StatusMessage";
-            this.StatusMessage.Size = new System.Drawing.Size(202, 31);
-            this.StatusMessage.TabIndex = 4;
-            this.StatusMessage.Text = "StatusMessage";
-            this.StatusMessage.Click += new System.EventHandler(this.label1_Click);
-            // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -101,7 +87,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(485, 62);
             this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "Logger SD Formatter";
+            this.textBox1.Text = "Logger Tool";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -118,7 +104,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(46, 543);
+            this.comboBox1.Location = new System.Drawing.Point(43, 407);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(303, 21);
             this.comboBox1.TabIndex = 7;
@@ -126,7 +112,7 @@
             // listCOMPorts
             // 
             this.listCOMPorts.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listCOMPorts.Location = new System.Drawing.Point(374, 543);
+            this.listCOMPorts.Location = new System.Drawing.Point(371, 407);
             this.listCOMPorts.Name = "listCOMPorts";
             this.listCOMPorts.Size = new System.Drawing.Size(322, 43);
             this.listCOMPorts.TabIndex = 8;
@@ -137,11 +123,11 @@
             // upload
             // 
             this.upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.upload.Location = new System.Drawing.Point(46, 761);
+            this.upload.Location = new System.Drawing.Point(30, 553);
             this.upload.Name = "upload";
             this.upload.Size = new System.Drawing.Size(303, 44);
             this.upload.TabIndex = 10;
-            this.upload.Text = "upload";
+            this.upload.Text = "upload_v1.1.0a";
             this.upload.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.upload.UseVisualStyleBackColor = true;
             this.upload.Click += new System.EventHandler(this.upload_Click);
@@ -150,96 +136,76 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // ErrorMessage
-            // 
-            this.ErrorMessage.AutoSize = true;
-            this.ErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ErrorMessage.ForeColor = System.Drawing.Color.Red;
-            this.ErrorMessage.Location = new System.Drawing.Point(39, 852);
-            this.ErrorMessage.Name = "ErrorMessage";
-            this.ErrorMessage.Size = new System.Drawing.Size(245, 39);
-            this.ErrorMessage.TabIndex = 11;
-            this.ErrorMessage.Text = "Error Message";
-            // 
-            // BinFilePath
-            // 
-            this.BinFilePath.AutoSize = true;
-            this.BinFilePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BinFilePath.Location = new System.Drawing.Point(47, 702);
-            this.BinFilePath.Name = "BinFilePath";
-            this.BinFilePath.Size = new System.Drawing.Size(167, 31);
-            this.BinFilePath.TabIndex = 12;
-            this.BinFilePath.Text = "Bin File Path";
-            // 
-            // selectBinFilePath
-            // 
-            this.selectBinFilePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectBinFilePath.Location = new System.Drawing.Point(46, 618);
-            this.selectBinFilePath.Name = "selectBinFilePath";
-            this.selectBinFilePath.Size = new System.Drawing.Size(303, 39);
-            this.selectBinFilePath.TabIndex = 13;
-            this.selectBinFilePath.Text = "Select Bin Filepath";
-            this.selectBinFilePath.UseVisualStyleBackColor = true;
-            this.selectBinFilePath.Click += new System.EventHandler(this.selectBinFilePath_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // chooseBuildFolder
+            // UpdateTimeStampButton
             // 
-            this.chooseBuildFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chooseBuildFolder.Location = new System.Drawing.Point(727, 146);
-            this.chooseBuildFolder.Name = "chooseBuildFolder";
-            this.chooseBuildFolder.Size = new System.Drawing.Size(303, 63);
-            this.chooseBuildFolder.TabIndex = 14;
-            this.chooseBuildFolder.Text = "Choose Build Folder";
-            this.chooseBuildFolder.UseVisualStyleBackColor = true;
-            this.chooseBuildFolder.Click += new System.EventHandler(this.chooseBuildFolder_Click);
+            this.UpdateTimeStampButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateTimeStampButton.Location = new System.Drawing.Point(30, 680);
+            this.UpdateTimeStampButton.Name = "UpdateTimeStampButton";
+            this.UpdateTimeStampButton.Size = new System.Drawing.Size(303, 61);
+            this.UpdateTimeStampButton.TabIndex = 17;
+            this.UpdateTimeStampButton.Text = "Update Time Stamp";
+            this.UpdateTimeStampButton.UseVisualStyleBackColor = true;
+            this.UpdateTimeStampButton.Click += new System.EventHandler(this.UpdateTimeStampButton_Click);
             // 
-            // buildFolderFP
+            // isProductionCheckbox
             // 
-            this.buildFolderFP.AutoSize = true;
-            this.buildFolderFP.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buildFolderFP.Location = new System.Drawing.Point(749, 238);
-            this.buildFolderFP.Name = "buildFolderFP";
-            this.buildFolderFP.Size = new System.Drawing.Size(262, 31);
-            this.buildFolderFP.TabIndex = 15;
-            this.buildFolderFP.Text = "Build Folder Filepath";
+            this.isProductionCheckbox.AutoSize = true;
+            this.isProductionCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.isProductionCheckbox.Location = new System.Drawing.Point(446, 146);
+            this.isProductionCheckbox.Name = "isProductionCheckbox";
+            this.isProductionCheckbox.Size = new System.Drawing.Size(205, 35);
+            this.isProductionCheckbox.TabIndex = 18;
+            this.isProductionCheckbox.Text = "is Production?";
+            this.isProductionCheckbox.UseVisualStyleBackColor = true;
+            this.isProductionCheckbox.CheckedChanged += new System.EventHandler(this.isProductionCheckbox_CheckedChanged);
             // 
-            // UploadFrontEnd
+            // upload113
             // 
-            this.UploadFrontEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UploadFrontEnd.Location = new System.Drawing.Point(727, 300);
-            this.UploadFrontEnd.Name = "UploadFrontEnd";
-            this.UploadFrontEnd.Size = new System.Drawing.Size(303, 63);
-            this.UploadFrontEnd.TabIndex = 16;
-            this.UploadFrontEnd.Text = "UploadFrontEnd";
-            this.UploadFrontEnd.UseVisualStyleBackColor = true;
-            this.UploadFrontEnd.Click += new System.EventHandler(this.UploadFrontEnd_Click);
+            this.upload113.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.upload113.Location = new System.Drawing.Point(422, 553);
+            this.upload113.Name = "upload113";
+            this.upload113.Size = new System.Drawing.Size(303, 44);
+            this.upload113.TabIndex = 19;
+            this.upload113.Text = "upload_v1.1.3";
+            this.upload113.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.upload113.UseVisualStyleBackColor = true;
+            this.upload113.Click += new System.EventHandler(this.upload113_Click);
+            // 
+            // upload120
+            // 
+            this.upload120.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.upload120.Location = new System.Drawing.Point(812, 553);
+            this.upload120.Name = "upload120";
+            this.upload120.Size = new System.Drawing.Size(303, 44);
+            this.upload120.TabIndex = 20;
+            this.upload120.Text = "upload_v1.2.0";
+            this.upload120.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.upload120.UseVisualStyleBackColor = true;
+            this.upload120.Click += new System.EventHandler(this.upload120_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 919);
-            this.Controls.Add(this.UploadFrontEnd);
-            this.Controls.Add(this.buildFolderFP);
-            this.Controls.Add(this.chooseBuildFolder);
-            this.Controls.Add(this.selectBinFilePath);
-            this.Controls.Add(this.BinFilePath);
-            this.Controls.Add(this.ErrorMessage);
+            this.Controls.Add(this.upload120);
+            this.Controls.Add(this.upload113);
+            this.Controls.Add(this.isProductionCheckbox);
+            this.Controls.Add(this.UpdateTimeStampButton);
             this.Controls.Add(this.upload);
             this.Controls.Add(this.listCOMPorts);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.StatusMessage);
             this.Controls.Add(this.SDFilePath);
             this.Controls.Add(this.chooseSDCard);
             this.Controls.Add(this.FormatSD);
             this.Name = "Form1";
-            this.Text = "LoggerSDFormatter";
+            this.Text = "Logger Tool";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -253,20 +219,17 @@
         private System.Windows.Forms.Button FormatSD;
         private System.Windows.Forms.Button chooseSDCard;
         private System.Windows.Forms.Label SDFilePath;
-        private System.Windows.Forms.Label StatusMessage;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button listCOMPorts;
         private System.Windows.Forms.Button upload;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Label ErrorMessage;
-        private System.Windows.Forms.Label BinFilePath;
-        private System.Windows.Forms.Button selectBinFilePath;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button chooseBuildFolder;
-        private System.Windows.Forms.Label buildFolderFP;
-        private System.Windows.Forms.Button UploadFrontEnd;
+        private System.Windows.Forms.Button UpdateTimeStampButton;
+        private System.Windows.Forms.CheckBox isProductionCheckbox;
+        private System.Windows.Forms.Button upload113;
+        private System.Windows.Forms.Button upload120;
     }
 }
 
