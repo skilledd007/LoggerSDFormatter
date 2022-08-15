@@ -53,11 +53,13 @@ namespace LoggerSDFormatter
             di.CreateSubdirectory("tests");
             di.CreateSubdirectory("webapp");
             di.CreateSubdirectory("time");
+            di.CreateSubdirectory("defaultpage");
             string[] dirs = Directory.GetDirectories(sdFolder, "*", SearchOption.AllDirectories);
             File.Create(Path.Combine(dirs[0], "batteryinfo.txt"));
             File.Create(Path.Combine(dirs[1], "customerinfo.txt"));
             File.Create(Path.Combine(dirs[1], "infofilled.txt"));
             File.Create(Path.Combine(dirs[1], "installerinfo.txt"));
+            File.Create(Path.Combine(dirs[8],"buttonchecked.txt"));
             FileStream settingsFile = File.Create(Path.Combine(dirs[4], "settings.txt"));
             Byte[] title = new UTF8Encoding(true).GetBytes("Battery Wizard\n");
             settingsFile.Write(title, 0, title.Length);
