@@ -98,20 +98,26 @@ namespace LoggerSDFormatter
         }
         private void FormatSD_Click(object sender, EventArgs e)
         {
-            if (!isProductionCheckbox.Checked)
+            try
             {
-                DialogResult ressy = MessageBox.Show("Are you sure you want to format the SD card? Doing so will delete All existing Data", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                if (ressy == DialogResult.OK)
+                if (!isProductionCheckbox.Checked)
+                {
+                    DialogResult ressy = MessageBox.Show("Are you sure you want to format the SD card? Doing so will delete All existing Data", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                    if (ressy == DialogResult.OK)
+                    {
+                        FormatSDCard();
+
+                    }
+                }
+                else
                 {
                     FormatSDCard();
-
                 }
-            }
-            else
+            } catch (Exception ex)
             {
-                FormatSDCard();
-            }
+                MessageBox.Show(ex.Message);
 
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
