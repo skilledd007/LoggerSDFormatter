@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.IO.Ports;
 using System.Diagnostics;
-
 namespace LoggerSDFormatter
 {
     public partial class Form1 : Form
@@ -56,9 +55,11 @@ namespace LoggerSDFormatter
             di.CreateSubdirectory("defaultpage");
             string[] dirs = Directory.GetDirectories(sdFolder, "*", SearchOption.AllDirectories);
             File.Create(Path.Combine(dirs[0], "batteryinfo.txt"));
+            File.Create(Path.Combine(dirs[0], "batteryinfofilled.txt"));
             File.Create(Path.Combine(dirs[1], "customerinfo.txt"));
-            File.Create(Path.Combine(dirs[1], "infofilled.txt"));
+            File.Create(Path.Combine(dirs[1], "customerinfofilled.txt"));
             File.Create(Path.Combine(dirs[1], "installerinfo.txt"));
+            File.Create(Path.Combine(dirs[1], "installerinfofilled.txt"));
             File.Create(Path.Combine(dirs[8],"buttonchecked.txt"));
             FileStream settingsFile = File.Create(Path.Combine(dirs[4], "settings.txt"));
             Byte[] title = new UTF8Encoding(true).GetBytes("Battery Wizard\n");
@@ -150,7 +151,9 @@ namespace LoggerSDFormatter
             string strCmdText;
             //strCmdText = "/C python -m esptool --chip esp32 --port \"" + comboBox1.GetItemText(comboBox1.SelectedItem) + "\" --baud 460800 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader_dio_40m.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 firmware.bin";
             string[] paths = { Directory.GetCurrentDirectory(), "v1.1.0a", "firmware.bin" };
-            strCmdText = "/K python -m esptool --chip esp32 --port \"" + comboBox1.GetItemText(comboBox1.SelectedItem) + "\" --baud 460800 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader_dio_40m.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 " +  Path.Combine(paths);
+            String[] paths2 = { Directory.GetCurrentDirectory(), "4MBPart", "partitions.bin" };
+
+            strCmdText = "/K python -m esptool --chip esp32 --port \"" + comboBox1.GetItemText(comboBox1.SelectedItem) + "\" --baud 460800 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader_dio_40m.bin 0x8000 " + Path.Combine(paths2) + " 0xe000 boot_app0.bin 0x10000 " +  Path.Combine(paths);
 
             try
             {
@@ -228,7 +231,13 @@ namespace LoggerSDFormatter
             string strCmdText;
             //strCmdText = "/C python -m esptool --chip esp32 --port \"" + comboBox1.GetItemText(comboBox1.SelectedItem) + "\" --baud 460800 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader_dio_40m.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 firmware.bin";
             string[] paths = { Directory.GetCurrentDirectory(), "v1.1.3", "firmware.bin" };
-            strCmdText = "/K python -m esptool --chip esp32 --port \"" + comboBox1.GetItemText(comboBox1.SelectedItem) + "\" --baud 460800 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader_dio_40m.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 " + Path.Combine(paths);
+            String[] paths2 = { Directory.GetCurrentDirectory(), "8MBPart", "partitions.bin" };
+            if (is4MB.Checked.Equals(true))
+            {
+                paths2[1] = "4MBPart";
+
+            }
+            strCmdText = "/K python -m esptool --chip esp32 --port \"" + comboBox1.GetItemText(comboBox1.SelectedItem) + "\" --baud 460800 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader_dio_40m.bin 0x8000 " + Path.Combine(paths2) + " 0xe000 boot_app0.bin 0x10000 " + Path.Combine(paths);
 
             try
             {
@@ -249,8 +258,15 @@ namespace LoggerSDFormatter
         {
             string strCmdText;
             //strCmdText = "/C python -m esptool --chip esp32 --port \"" + comboBox1.GetItemText(comboBox1.SelectedItem) + "\" --baud 460800 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader_dio_40m.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 firmware.bin";
-            string[] paths = { Directory.GetCurrentDirectory(), "v1.2.0", "firmware.bin" };
-            strCmdText = "/K python -m esptool --chip esp32 --port \"" + comboBox1.GetItemText(comboBox1.SelectedItem) + "\" --baud 460800 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader_dio_40m.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 " + Path.Combine(paths);
+            String[] paths = { Directory.GetCurrentDirectory(), "v1.2.0-8MB", "firmware.bin" };
+            String[] paths2 = { Directory.GetCurrentDirectory(), "8MBPart", "partitions.bin" };
+            if (is4MB.Checked.Equals(true))
+            {
+                paths[1] = "v1.2.0-4MB";
+                paths2[1] = "4MBPart";
+
+            } 
+            strCmdText = "/K python -m esptool --chip esp32 --port \"" + comboBox1.GetItemText(comboBox1.SelectedItem) + "\" --baud 460800 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader_dio_40m.bin 0x8000 " +  Path.Combine(paths2) + " 0xe000 boot_app0.bin 0x10000 " + Path.Combine(paths);
 
             try
             {
@@ -268,6 +284,11 @@ namespace LoggerSDFormatter
         }
 
         private void selectBuildFolder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createTarFile_Click(object sender, EventArgs e)
         {
 
         }

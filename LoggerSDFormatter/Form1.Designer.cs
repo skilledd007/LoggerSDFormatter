@@ -44,6 +44,8 @@
             this.isProductionCheckbox = new System.Windows.Forms.CheckBox();
             this.upload113 = new System.Windows.Forms.Button();
             this.upload120 = new System.Windows.Forms.Button();
+            this.createTarFile = new System.Windows.Forms.Button();
+            this.is4MB = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -187,11 +189,35 @@
             this.upload120.UseVisualStyleBackColor = true;
             this.upload120.Click += new System.EventHandler(this.upload120_Click);
             // 
+            // createTarFile
+            // 
+            this.createTarFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createTarFile.Location = new System.Drawing.Point(727, 146);
+            this.createTarFile.Name = "createTarFile";
+            this.createTarFile.Size = new System.Drawing.Size(303, 63);
+            this.createTarFile.TabIndex = 21;
+            this.createTarFile.Text = "createTarFile";
+            this.createTarFile.UseVisualStyleBackColor = true;
+            this.createTarFile.Click += new System.EventHandler(this.createTarFile_Click);
+            // 
+            // is4MB
+            // 
+            this.is4MB.AutoSize = true;
+            this.is4MB.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.is4MB.Location = new System.Drawing.Point(83, 483);
+            this.is4MB.Name = "is4MB";
+            this.is4MB.Size = new System.Drawing.Size(130, 35);
+            this.is4MB.TabIndex = 22;
+            this.is4MB.Text = "is 4MB?";
+            this.is4MB.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 919);
+            this.Controls.Add(this.is4MB);
+            this.Controls.Add(this.createTarFile);
             this.Controls.Add(this.upload120);
             this.Controls.Add(this.upload113);
             this.Controls.Add(this.isProductionCheckbox);
@@ -230,6 +256,8 @@
         private System.Windows.Forms.CheckBox isProductionCheckbox;
         private System.Windows.Forms.Button upload113;
         private System.Windows.Forms.Button upload120;
+        private System.Windows.Forms.Button createTarFile;
+        private System.Windows.Forms.CheckBox is4MB;
     }
 }
 
