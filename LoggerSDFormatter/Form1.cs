@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.IO;
 using System.IO.Ports;
 using System.Diagnostics;
+using SharpCompress.Writers;
+using Aspose.Zip.Tar;
+
 namespace LoggerSDFormatter
 {
     public partial class Form1 : Form
@@ -285,12 +288,38 @@ namespace LoggerSDFormatter
 
         private void selectBuildFolder_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void createTarFile_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if(File.Exists(Path.Combine(Directory.GetCurrentDirectory(), "webapp_update.tar")))
+                {
+                    File.Delete(Path.Combine(Directory.GetCurrentDirectory(), "webapp_update.tar"));
+                }
+                string strCmdText1 = "/K set PATH=%PATH%;C:\\Program Files\\7-Zip\\";
+                string strCmdText2 = "/K 7z a webapp_update.tar ";
+                DirectoryInfo di2 = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "build"));
+                foreach (FileInfo file in di2.EnumerateFiles())
+                {
+                    strCmdText2 = strCmdText2 + " " + file.FullName;
+                }
+                foreach (DirectoryInfo subDirectory in di2.EnumerateDirectories())
+                {
+                    strCmdText2 = strCmdText2 + " " + subDirectory.FullName;
+                }
+                ProcessStartInfo info = new ProcessStartInfo("Process.exe");
+                info.UseShellExecute = false;
+                info.Verb = "runas";
+                Process.Start("CMD.exe", strCmdText1);
+                Process.Start("CMD.exe", strCmdText2);
 
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
