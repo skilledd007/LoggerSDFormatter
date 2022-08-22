@@ -64,6 +64,7 @@ namespace LoggerSDFormatter
                 di.CreateSubdirectory("webapp");
                 di.CreateSubdirectory("time");
                 di.CreateSubdirectory("defaultpage");
+                di.CreateSubdirectory("flags");
                 string[] dirs = Directory.GetDirectories(sdFolder, "*", SearchOption.AllDirectories);
                 File.Create(Path.Combine(dirs[0], "batteryinfo.txt")).Dispose();
                 File.Create(Path.Combine(dirs[0], "batteryinfofilled.txt")).Dispose();
@@ -72,6 +73,14 @@ namespace LoggerSDFormatter
                 File.Create(Path.Combine(dirs[1], "installerinfo.txt")).Dispose();
                 File.Create(Path.Combine(dirs[1], "installerinfofilled.txt")).Dispose();
                 File.Create(Path.Combine(dirs[8], "buttonchecked.txt")).Dispose();
+                File.Create(Path.Combine(dirs[9], "curr_snsr_cal.txt")).Dispose();
+
+
+                FileStream rtcFile = File.Create(Path.Combine(dirs[9], "rtc.txt"));
+                Byte[] stringasbytes = new UTF8Encoding(true).GetBytes("0\n");
+                rtcFile.Write(stringasbytes, 0, stringasbytes.Length);
+                rtcFile.Close();
+
                 FileStream settingsFile = File.Create(Path.Combine(dirs[4], "settings.txt"));
                 Byte[] title = new UTF8Encoding(true).GetBytes("Battery Wizard " + serialNumber + "\n");
                 settingsFile.Write(title, 0, title.Length);
