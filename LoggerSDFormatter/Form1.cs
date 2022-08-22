@@ -39,66 +39,76 @@ namespace LoggerSDFormatter
         }
         private void FormatSDCard()
         {
-            DirectoryInfo di = new DirectoryInfo(sdFolder);
-            foreach (FileInfo file in di.EnumerateFiles())
+            if (richTextBox1.Text == "")
             {
-                file.Delete();
+                MessageBox.Show("Please enter in a serial number!!", "ERROR!");
             }
-            foreach (DirectoryInfo subDirectory in di.EnumerateDirectories())
+            else
             {
-                subDirectory.Delete(true);
-            }
-            di.CreateSubdirectory("batteryinfo");
-            di.CreateSubdirectory("customerinfo");
-            di.CreateSubdirectory("data");
-            di.CreateSubdirectory("logs");
-            di.CreateSubdirectory("settings");
-            di.CreateSubdirectory("tests");
-            di.CreateSubdirectory("webapp");
-            di.CreateSubdirectory("time");
-            di.CreateSubdirectory("defaultpage");
-            string[] dirs = Directory.GetDirectories(sdFolder, "*", SearchOption.AllDirectories);
-            File.Create(Path.Combine(dirs[0], "batteryinfo.txt"));
-            File.Create(Path.Combine(dirs[0], "batteryinfofilled.txt"));
-            File.Create(Path.Combine(dirs[1], "customerinfo.txt"));
-            File.Create(Path.Combine(dirs[1], "customerinfofilled.txt"));
-            File.Create(Path.Combine(dirs[1], "installerinfo.txt"));
-            File.Create(Path.Combine(dirs[1], "installerinfofilled.txt"));
-            File.Create(Path.Combine(dirs[8],"buttonchecked.txt"));
-            FileStream settingsFile = File.Create(Path.Combine(dirs[4], "settings.txt"));
-            Byte[] title = new UTF8Encoding(true).GetBytes("Battery Wizard " + serialNumber + "\n");
-            settingsFile.Write(title, 0, title.Length);
-            settingsFile.Close();
-            FileStream timeFile = File.Create(Path.Combine(dirs[7], "starting_time.txt"));
-            //Get Unix time
-            String timeString = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + "\n";
-            Byte[] timestamp = new UTF8Encoding(true).GetBytes(timeString);
-            timeFile.Write(timestamp, 0, timestamp.Length);
-            timeFile.Close();
-            DirectoryInfo di2 = new DirectoryInfo(Path.Combine(sdFolder, "webapp"));
-            foreach (FileInfo file in di2.EnumerateFiles())
-            {
-                file.Delete();
-            }
-            foreach (DirectoryInfo subDirectory in di2.EnumerateDirectories())
-            {
-                subDirectory.Delete(true);
-            }
-            foreach (string dirPath in Directory.GetDirectories(Path.Combine(Directory.GetCurrentDirectory(), "build"), "*", SearchOption.AllDirectories))
-            {
-                Directory.CreateDirectory(dirPath.Replace(Path.Combine(Directory.GetCurrentDirectory(),"build"), Path.Combine(sdFolder,"webapp")));
-            }
-            var allFiles = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "build"), "*.*", SearchOption.AllDirectories);
+               
+                DirectoryInfo di = new DirectoryInfo(sdFolder);
+                foreach (FileInfo file in di.EnumerateFiles())
+                {
+                    file.Delete();
+                }
+                foreach (DirectoryInfo subDirectory in di.EnumerateDirectories())
+                {
+                    subDirectory.Delete(true);
+                }
+                di.CreateSubdirectory("batteryinfo");
+                di.CreateSubdirectory("customerinfo");
+                di.CreateSubdirectory("data");
+                di.CreateSubdirectory("logs");
+                di.CreateSubdirectory("settings");
+                di.CreateSubdirectory("tests");
+                di.CreateSubdirectory("webapp");
+                di.CreateSubdirectory("time");
+                di.CreateSubdirectory("defaultpage");
+                string[] dirs = Directory.GetDirectories(sdFolder, "*", SearchOption.AllDirectories);
+                File.Create(Path.Combine(dirs[0], "batteryinfo.txt"));
+                File.Create(Path.Combine(dirs[0], "batteryinfofilled.txt"));
+                File.Create(Path.Combine(dirs[1], "customerinfo.txt"));
+                File.Create(Path.Combine(dirs[1], "customerinfofilled.txt"));
+                File.Create(Path.Combine(dirs[1], "installerinfo.txt"));
+                File.Create(Path.Combine(dirs[1], "installerinfofilled.txt"));
+                File.Create(Path.Combine(dirs[8], "buttonchecked.txt"));
+                FileStream settingsFile = File.Create(Path.Combine(dirs[4], "settings.txt"));
+                Byte[] title = new UTF8Encoding(true).GetBytes("Battery Wizard " + serialNumber + "\n");
+                settingsFile.Write(title, 0, title.Length);
+                settingsFile.Close();
+                FileStream timeFile = File.Create(Path.Combine(dirs[7], "starting_time.txt"));
+                //Get Unix time
+                String timeString = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + "\n";
+                Byte[] timestamp = new UTF8Encoding(true).GetBytes(timeString);
+                timeFile.Write(timestamp, 0, timestamp.Length);
+                timeFile.Close();
+                DirectoryInfo di2 = new DirectoryInfo(Path.Combine(sdFolder, "webapp"));
+                foreach (FileInfo file in di2.EnumerateFiles())
+                {
+                    file.Delete();
+                }
+                foreach (DirectoryInfo subDirectory in di2.EnumerateDirectories())
+                {
+                    subDirectory.Delete(true);
+                }
+                foreach (string dirPath in Directory.GetDirectories(Path.Combine(Directory.GetCurrentDirectory(), "build"), "*", SearchOption.AllDirectories))
+                {
+                    Directory.CreateDirectory(dirPath.Replace(Path.Combine(Directory.GetCurrentDirectory(), "build"), Path.Combine(sdFolder, "webapp")));
+                }
+                var allFiles = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "build"), "*.*", SearchOption.AllDirectories);
 
-            foreach (string newPath in allFiles)
-            {
-                File.Copy(newPath, newPath.Replace(Path.Combine(Directory.GetCurrentDirectory(), "build"), Path.Combine(sdFolder, "webapp")));
-            }
-            DialogResult res = MessageBox.Show("Formatted SD Card Successfully and Loaded Webapp! ", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (res == DialogResult.OK)
-            {
+                foreach (string newPath in allFiles)
+                {
+                    File.Copy(newPath, newPath.Replace(Path.Combine(Directory.GetCurrentDirectory(), "build"), Path.Combine(sdFolder, "webapp")));
+                }
+                DialogResult res = MessageBox.Show("Formatted SD Card Successfully and Loaded Webapp! ", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                richTextBox1.Text = "";
+                serialNumber = richTextBox1.Text;
+                if (res == DialogResult.OK)
+                {
 
 
+                }
             }
         }
         private void FormatSD_Click(object sender, EventArgs e)
@@ -325,12 +335,14 @@ namespace LoggerSDFormatter
 
         private void serialEnterOK_Click(object sender, EventArgs e)
         {
-
-            DialogResult ressy = MessageBox.Show("The serial Number entered is " + richTextBox1.Text, "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (ressy == DialogResult.OK)
-            {
-                serialNumber = richTextBox1.Text;
-            } 
+            
+            
+                DialogResult ressy = MessageBox.Show("The serial Number entered is " + richTextBox1.Text, "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (ressy == DialogResult.OK)
+                {
+                    serialNumber = richTextBox1.Text;
+                }
+            
          
         }
 
