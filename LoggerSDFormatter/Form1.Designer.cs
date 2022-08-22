@@ -46,6 +46,9 @@
             this.upload120 = new System.Windows.Forms.Button();
             this.createTarFile = new System.Windows.Forms.Button();
             this.is4MB = new System.Windows.Forms.CheckBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.serialNumLabel = new System.Windows.Forms.Label();
+            this.serialEnterOK = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +56,7 @@
             // FormatSD
             // 
             this.FormatSD.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormatSD.Location = new System.Drawing.Point(39, 300);
+            this.FormatSD.Location = new System.Drawing.Point(39, 424);
             this.FormatSD.Name = "FormatSD";
             this.FormatSD.Size = new System.Drawing.Size(303, 61);
             this.FormatSD.TabIndex = 0;
@@ -106,7 +109,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(43, 407);
+            this.comboBox1.Location = new System.Drawing.Point(39, 524);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(303, 21);
             this.comboBox1.TabIndex = 7;
@@ -114,7 +117,7 @@
             // listCOMPorts
             // 
             this.listCOMPorts.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listCOMPorts.Location = new System.Drawing.Point(371, 407);
+            this.listCOMPorts.Location = new System.Drawing.Point(367, 524);
             this.listCOMPorts.Name = "listCOMPorts";
             this.listCOMPorts.Size = new System.Drawing.Size(322, 43);
             this.listCOMPorts.TabIndex = 8;
@@ -125,7 +128,7 @@
             // upload
             // 
             this.upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.upload.Location = new System.Drawing.Point(30, 553);
+            this.upload.Location = new System.Drawing.Point(26, 670);
             this.upload.Name = "upload";
             this.upload.Size = new System.Drawing.Size(303, 44);
             this.upload.TabIndex = 10;
@@ -145,7 +148,7 @@
             // UpdateTimeStampButton
             // 
             this.UpdateTimeStampButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateTimeStampButton.Location = new System.Drawing.Point(30, 680);
+            this.UpdateTimeStampButton.Location = new System.Drawing.Point(26, 797);
             this.UpdateTimeStampButton.Name = "UpdateTimeStampButton";
             this.UpdateTimeStampButton.Size = new System.Drawing.Size(303, 61);
             this.UpdateTimeStampButton.TabIndex = 17;
@@ -168,7 +171,7 @@
             // upload113
             // 
             this.upload113.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.upload113.Location = new System.Drawing.Point(422, 553);
+            this.upload113.Location = new System.Drawing.Point(418, 670);
             this.upload113.Name = "upload113";
             this.upload113.Size = new System.Drawing.Size(303, 44);
             this.upload113.TabIndex = 19;
@@ -180,7 +183,7 @@
             // upload120
             // 
             this.upload120.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.upload120.Location = new System.Drawing.Point(812, 553);
+            this.upload120.Location = new System.Drawing.Point(808, 670);
             this.upload120.Name = "upload120";
             this.upload120.Size = new System.Drawing.Size(303, 44);
             this.upload120.TabIndex = 20;
@@ -204,18 +207,52 @@
             // 
             this.is4MB.AutoSize = true;
             this.is4MB.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.is4MB.Location = new System.Drawing.Point(83, 483);
+            this.is4MB.Location = new System.Drawing.Point(79, 600);
             this.is4MB.Name = "is4MB";
             this.is4MB.Size = new System.Drawing.Size(130, 35);
             this.is4MB.TabIndex = 22;
             this.is4MB.Text = "is 4MB?";
             this.is4MB.UseVisualStyleBackColor = true;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(43, 359);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(279, 31);
+            this.richTextBox1.TabIndex = 23;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // serialNumLabel
+            // 
+            this.serialNumLabel.AutoSize = true;
+            this.serialNumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serialNumLabel.Location = new System.Drawing.Point(37, 315);
+            this.serialNumLabel.Name = "serialNumLabel";
+            this.serialNumLabel.Size = new System.Drawing.Size(98, 31);
+            this.serialNumLabel.TabIndex = 24;
+            this.serialNumLabel.Text = "Serial#";
+            // 
+            // serialEnterOK
+            // 
+            this.serialEnterOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serialEnterOK.Location = new System.Drawing.Point(446, 359);
+            this.serialEnterOK.Name = "serialEnterOK";
+            this.serialEnterOK.Size = new System.Drawing.Size(122, 45);
+            this.serialEnterOK.TabIndex = 25;
+            this.serialEnterOK.Text = "OK";
+            this.serialEnterOK.UseVisualStyleBackColor = true;
+            this.serialEnterOK.Click += new System.EventHandler(this.serialEnterOK_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 919);
+            this.Controls.Add(this.serialEnterOK);
+            this.Controls.Add(this.serialNumLabel);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.is4MB);
             this.Controls.Add(this.createTarFile);
             this.Controls.Add(this.upload120);
@@ -258,6 +295,9 @@
         private System.Windows.Forms.Button upload120;
         private System.Windows.Forms.Button createTarFile;
         private System.Windows.Forms.CheckBox is4MB;
+        private System.Windows.Forms.Label serialNumLabel;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button serialEnterOK;
     }
 }
 

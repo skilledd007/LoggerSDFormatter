@@ -21,6 +21,7 @@ namespace LoggerSDFormatter
         string comPort = "";
         string binFilePath = "";
         string buildFolder = "";
+        string serialNumber = "";
         Boolean isProduction=false;
         public Form1()
         {
@@ -65,7 +66,7 @@ namespace LoggerSDFormatter
             File.Create(Path.Combine(dirs[1], "installerinfofilled.txt"));
             File.Create(Path.Combine(dirs[8],"buttonchecked.txt"));
             FileStream settingsFile = File.Create(Path.Combine(dirs[4], "settings.txt"));
-            Byte[] title = new UTF8Encoding(true).GetBytes("Battery Wizard\n");
+            Byte[] title = new UTF8Encoding(true).GetBytes("Battery Wizard " + serialNumber + "\n");
             settingsFile.Write(title, 0, title.Length);
             settingsFile.Close();
             FileStream timeFile = File.Create(Path.Combine(dirs[7], "starting_time.txt"));
@@ -214,7 +215,7 @@ namespace LoggerSDFormatter
                 DirectoryInfo di = new DirectoryInfo(sdFolder);
                 di.CreateSubdirectory("time");
             }
-             dirs = Directory.GetDirectories(sdFolder, "*", SearchOption.AllDirectories); // Run it again if the time directory did not exist anymore.
+            dirs = Directory.GetDirectories(sdFolder, "*", SearchOption.AllDirectories); // Run it again if the time directory did not exist anymore.
             FileStream timeFile = File.Create(Path.Combine(dirs[7], "starting_time.txt"));
             //Get Unix time
             String timeString = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + "\n";
@@ -320,6 +321,22 @@ namespace LoggerSDFormatter
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void serialEnterOK_Click(object sender, EventArgs e)
+        {
+
+            DialogResult ressy = MessageBox.Show("The serial Number entered is " + richTextBox1.Text, "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (ressy == DialogResult.OK)
+            {
+                serialNumber = richTextBox1.Text;
+            } 
+         
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
