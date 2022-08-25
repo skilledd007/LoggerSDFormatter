@@ -65,6 +65,7 @@ namespace LoggerSDFormatter
                 di.CreateSubdirectory("time");
                 di.CreateSubdirectory("defaultpage");
                 di.CreateSubdirectory("flags");
+                di.CreateSubdirectory("state");
                 string[] dirs = Directory.GetDirectories(sdFolder, "*", SearchOption.AllDirectories);
                 File.Create(Path.Combine(dirs[0], "batteryinfo.txt")).Dispose();
                 File.Create(Path.Combine(dirs[0], "batteryinfofilled.txt")).Dispose();
@@ -74,6 +75,9 @@ namespace LoggerSDFormatter
                 File.Create(Path.Combine(dirs[1], "installerinfofilled.txt")).Dispose();
                 File.Create(Path.Combine(dirs[8], "buttonchecked.txt")).Dispose();
                 File.Create(Path.Combine(dirs[9], "curr_snsr_cal.txt")).Dispose();
+                File.Create(Path.Combine(dirs[10], "calibration.txt")).Dispose();
+                File.Create(Path.Combine(dirs[10], "amp_hours.txt")).Dispose();
+
 
 
                 FileStream rtcFile = File.Create(Path.Combine(dirs[9], "rtc.txt"));
