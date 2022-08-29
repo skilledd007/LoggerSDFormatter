@@ -49,6 +49,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.serialNumLabel = new System.Windows.Forms.Label();
             this.serialEnterOK = new System.Windows.Forms.Button();
+            this.GoToDevVersion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -245,11 +246,23 @@
             this.serialEnterOK.UseVisualStyleBackColor = true;
             this.serialEnterOK.Click += new System.EventHandler(this.serialEnterOK_Click);
             // 
+            // GoToDevVersion
+            // 
+            this.GoToDevVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GoToDevVersion.Location = new System.Drawing.Point(727, 256);
+            this.GoToDevVersion.Name = "GoToDevVersion";
+            this.GoToDevVersion.Size = new System.Drawing.Size(303, 63);
+            this.GoToDevVersion.TabIndex = 26;
+            this.GoToDevVersion.Text = "I am a Developer";
+            this.GoToDevVersion.UseVisualStyleBackColor = true;
+            this.GoToDevVersion.Click += new System.EventHandler(this.GoToDevVersion_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 919);
+            this.Controls.Add(this.GoToDevVersion);
             this.Controls.Add(this.serialEnterOK);
             this.Controls.Add(this.serialNumLabel);
             this.Controls.Add(this.richTextBox1);
@@ -298,6 +311,7 @@
         private System.Windows.Forms.Label serialNumLabel;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button serialEnterOK;
+        private System.Windows.Forms.Button GoToDevVersion;
     }
 }
 

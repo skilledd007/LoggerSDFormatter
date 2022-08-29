@@ -363,5 +363,12 @@ namespace LoggerSDFormatter
         {
            
         }
+
+        private void GoToDevVersion_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoggerTool_DeveloperEdition form = new LoggerTool_DeveloperEdition(this);
+            form.Show();
+        }
     }
 }
