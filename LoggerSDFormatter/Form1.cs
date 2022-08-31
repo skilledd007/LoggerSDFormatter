@@ -66,6 +66,7 @@ namespace LoggerSDFormatter
                 di.CreateSubdirectory("defaultpage");
                 di.CreateSubdirectory("flags");
                 di.CreateSubdirectory("state");
+                di.CreateSubdirectory("webapp_alt");
                 string[] dirs = Directory.GetDirectories(sdFolder, "*", SearchOption.AllDirectories);
                 File.Create(Path.Combine(dirs[0], "batteryinfo.txt")).Dispose();
                 File.Create(Path.Combine(dirs[0], "batteryinfofilled.txt")).Dispose();
@@ -73,11 +74,12 @@ namespace LoggerSDFormatter
                 File.Create(Path.Combine(dirs[1], "customerinfofilled.txt")).Dispose();
                 File.Create(Path.Combine(dirs[1], "installerinfo.txt")).Dispose();
                 File.Create(Path.Combine(dirs[1], "installerinfofilled.txt")).Dispose();
+                File.Create(Path.Combine(dirs[3],"changelog.txt")).Dispose();
                 File.Create(Path.Combine(dirs[8], "buttonchecked.txt")).Dispose();
                 File.Create(Path.Combine(dirs[9], "curr_snsr_cal.txt")).Dispose();
                 File.Create(Path.Combine(dirs[10], "calibration.txt")).Dispose();
                 File.Create(Path.Combine(dirs[10], "amp_hours.txt")).Dispose();
-
+                File.Create(Path.Combine(dirs[10], "update_status.txt")).Dispose();
 
 
                 FileStream rtcFile = File.Create(Path.Combine(dirs[9], "rtc.txt"));
@@ -114,6 +116,10 @@ namespace LoggerSDFormatter
                 {
                     File.Copy(newPath, newPath.Replace(Path.Combine(Directory.GetCurrentDirectory(), "build"), Path.Combine(sdFolder, "webapp")));
                 }
+                string[] paths = { Directory.GetCurrentDirectory(), "dne_webpage", "index.html" };
+                string[] paths2 = { sdFolder, "webapp_alt", "index.html" };
+                File.Copy(Path.Combine(paths), Path.Combine(paths2)); 
+
                 DialogResult res = MessageBox.Show("Formatted SD Card Successfully and Loaded Webapp! ", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 richTextBox1.Text = "";
                 serialNumber = richTextBox1.Text;

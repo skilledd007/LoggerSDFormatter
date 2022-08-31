@@ -191,12 +191,13 @@ namespace LoggerSDFormatter
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(729, 35);
+            this.textBox1.Location = new System.Drawing.Point(511, 35);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(485, 62);
+            this.textBox1.Size = new System.Drawing.Size(697, 62);
             this.textBox1.TabIndex = 30;
-            this.textBox1.Text = "Logger Tool";
+            this.textBox1.Text = "Logger Tool Developer Edition";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // SDFilePath
             // 
@@ -271,6 +272,11 @@ namespace LoggerSDFormatter
         private void LoggerTool_DeveloperEdition_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
